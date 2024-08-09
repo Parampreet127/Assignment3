@@ -1,0 +1,419 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  line-height: 1.5;
+  background-color: rgb(255, 253, 253);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 400;
+  transition: background-color 0.5s ease-in-out;
+}
+.container {
+  max-width: 90%;
+  margin-left: 200px;
+  display: flex;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.container1 {
+  max-width: 100%;
+  margin: 1%;
+  display: flex;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between
+{
+  justify-content:space-between;
+}
+
+div 
+{
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  transition: all 0.5s ease;
+  background-color: rgb(57, 73, 116);
+  animation: slideDown 0.5s ease-in-out;
+}
+
+.header.fixed {
+  background-color: #ffffff;
+  position: fixed;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header .nav-toggle {
+  width: 40px;
+  height: 34px;
+  border: 1px solid #0c0c0c;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  display: none;
+}
+
+.header.fixed .nav-toggle {
+  border-color: #000000;
+}
+
+.header .nav-toggle span {
+  height: 1px;
+  display: block;
+  width: 16px;
+  background-color: #ffffff;
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.header .nav-toggle span:before,
+.header .nav-toggle span:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #ffffff;
+  transition: all 0.5s ease;
+}
+
+.header.fixed .nav-toggle span,
+.header.fixed .nav-toggle span:before,
+.header.fixed .nav-toggle span:after {
+  background-color: #f7f5f5;
+}
+
+.header .nav-toggle span:before {
+  transform: translateY(-6px);
+}
+
+.header .nav-toggle span:after {
+  transform: translateY(6px);
+}
+
+.header .nav {
+  padding: 0 15px;
+}
+
+.header .nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header .nav ul li {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.header .nav ul li a {
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 900;
+  color: yellow;
+  padding: 15px 0;
+  display: block;
+  margin-left: 20px;
+  transition: all 0.5s ease;
+}
+
+.header.fixed .nav ul li a {
+  color: yellow;
+}
+
+.header.fixed .nav ul li a:hover,
+.header .nav ul li a:hover {
+  color: white;
+  font-size: 23px;
+  box-shadow: #000000;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.home-section {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 15px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+#myVideo {
+  width: 100%;
+}
+
+.about-section,
+.predators-section {
+  background: #f9f8f8;
+  color: #090909;
+  padding: 60px 0;
+  display: flex;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.about-section h2,
+.predators-section h2,
+.gallery-section h2,
+.count-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-section p,
+.predators-section p {
+  font-size: 18px;
+  margin: 20px;
+  line-height: 1.6;
+  width: 50%;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.gallery-section figure {
+  margin-bottom: 20px;
+}
+
+.gallery-section img {
+  width: 367px;
+  height: 500px;
+  display: block;
+  margin: 10px;
+  transition: transform 0.3s ease-out;
+}
+
+.gallery-section img:hover {
+  transform: scale(1.17);
+}
+
+.gallery-section video {
+  width: 49%;
+  display: block;
+  margin: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-section video:hover {
+  transform: scale(1.05);
+}
+
+.count-section table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-left: 25%;
+  align-items: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.count-section table,
+.count-section th,
+.count-section td {
+  border: 1px dotted #22155e;
+}
+
+.count-section th,
+.count-section td {
+  padding: 12px;
+  text-align: left;
+}
+
+.count-section th {
+  background: #01000a;
+  color: rgb(253, 253, 255);
+}
+
+.count-section tbody tr:nth-child(odd) {
+  background: #fbfbfc;
+  color: #22155e;
+}
+
+footer {
+  background: #edecf0;
+  color: #0b0b0b;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  animation: fadeIn 1s ease-in-out;
+}
+
+footer p {
+  margin: 0;
+}
+
+.honesty {
+  color: #060000;
+  padding: 60px 0;
+  text-align: center;
+  margin-top: 100px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.honesty h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.honesty p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.honesty ul {
+  list-style: none;
+}
+
+.honesty ul {
+  margin-top: 10px;
+  list-style: decimal;
+  padding-left: 20px;
+  text-align: left;
+  margin-left: 200px;
+}
+
+.honesty a {
+  color: rgb(10, 2, 59);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.honesty a:hover {
+  text-decoration: underline;
+  color: rgb(0, 0, 128);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* Fixed Navigation Bar */
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Lightbox Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+#lightbox-media img,
+#lightbox-media video {
+  width: 100%;
+  height: auto;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ddd;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Buttons background color to red and after effect */
+button, .btn {
+  background-color: red;
+  position: relative;
+  text-transform: uppercase;
+}
+button::after, .btn::after {
+  content: "!";
+  display: block;
+}
+
+/* Contact Us Form dashed border */
+.contact-form {
+  border: 2px dashed #000;
+}/*# sourceMappingURL=style.css.map */

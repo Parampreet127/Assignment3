@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="css/style1.css">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+</head>
+<body style="background-image: url('img/img9.jpg'); background-size: cover; opacity: .9;">
+    <div class="container">
+        <div class="form">
+            <div class="contact-form">
+                <form id="contact-form" action="https://formspree.io/f/xyzgwezn" method="POST">
+                    <h3 class="title">Contact us</h3>
+                    <div class="input-container">
+                        <input type="text" name="first_name" class="input" placeholder="First Name" required minlength="5" />
+                        <span>First Name</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" name="last_name" class="input" placeholder="Last Name" required minlength="5" />
+                        <span>Last Name</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" name="email" class="input" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                        <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="date" name="date" class="input" placeholder="Date" required />
+                        <span>Date</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="phone" class="input" placeholder="Phone" required pattern="\d{10}" />
+                        <span>Phone</span>
+                    </div>
+                    <div class="input-container textarea">
+                        <textarea name="message" class="input" placeholder="Message" required minlength="50"></textarea>
+                        <span>Message</span>
+                    </div>
+                    <input type="submit" value="Submit" class="btn" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            if (!validateForm(formObject)) {
+                alert('Please fill out the form correctly.');
+                return;
+            }
+
+            // Send the form data to Formspree
+            fetch(form.action, {
+                method: form.method,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formObject)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    // Send form data to the client's email
+                    sendEmail(formObject);
+                    alert('Form submitted successfully!');
+                    form.reset();
+                } else {
+                    alert('Form submission failed.');
+                }
+            })
+            .catch(error => {
+                alert('Form submission failed.');
+            });
+        });
+
+        function validateForm(formObject) {
+            const { first_name, last_name, email, date, phone, message } = formObject;
+            const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            const datePattern = /^\d{4}-\d{2}-\d{2}$/; // Updated to match the HTML5 date input format (YYYY-MM-DD)
+            const phonePattern = /^\d{10}$/;
+
+            return (
+                first_name.length >= 5 &&
+                last_name.length >= 5 &&
+                emailPattern.test(email) &&
+                datePattern.test(date) &&
+                phonePattern.test(phone) &&
+                message.length >= 50
+            );
+        }
+
+        function sendEmail(formObject) {
+            const emailContent = `
+                First Name: ${formObject.first_name}
+                Last Name: ${formObject.last_name}
+                Email: ${formObject.email}
+                Date: ${formObject.date}
+                Phone: ${formObject.phone}
+                Message: ${formObject.message}
+            `;
+
+            fetch('https://api.your-email-service.com/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    to: 'client@example.com',
+                    subject: 'New Contact Form Submission',
+                    text: emailContent
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    console.log('Email sent successfully.');
+                } else {
+                    console.log('Email sending failed.');
+                }
+            })
+            .catch(error => {
+                console.log('Email sending failed.');
+            });
+        }
+    </script>
+</body>
+</html>

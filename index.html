@@ -1,0 +1,265 @@
+<!-- Your main page should go here -->
+<!DOCTYPE html>
+<html>
+	
+<head>
+    <!-- Write your species name under the title -->
+	<title> DOLPHINS  </title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<!-- Link to your JavaScript file -->
+		<script src="js/main.js"></script>
+
+</head>
+
+<body>
+	<script src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    // Make the navigation bar fixed when scrolling
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 0) {
+            $('.header').addClass('fixed-nav');
+        } else {
+            $('.header').removeClass('fixed-nav');
+        }
+    });
+
+    // Array to hold gallery items
+    var slides = [];
+    var currentIndex = 0;
+
+    // Initialize gallery items
+    $('.gallery-section figure, .gallery-section video').each(function() {
+        slides.push(this);
+    });
+
+    // Function to show the lightbox
+    function showLightbox(index) {
+        var $currentSlide = $(slides[index]);
+        var content;
+
+        if ($currentSlide.is('figure')) {
+            var img = $currentSlide.find('img');
+            content = `<img src="${img.attr('src')}" alt="${img.attr('alt')}">`;
+        } else {
+            var video = $currentSlide.find('video');
+            content = `<video controls>
+                           <source src="${video.find('source').attr('src')}" type="video/mp4">
+                       </video>`;
+        }
+
+        $('#lightbox-media').html(content);
+        $('#lightbox').show();
+        currentIndex = index;
+    }
+
+    // Show lightbox when an image or video is clicked
+    $('.gallery-section figure, .gallery-section video').on('click', function() {
+        var index = $(this).index();
+        showLightbox(index);
+    });
+
+    // Close lightbox
+    $('#lightbox-close, #lightbox').on('click', function(e) {
+        if (e.target.id === 'lightbox' || e.target.id === 'lightbox-close') {
+            $('#lightbox').hide();
+        }
+    });
+
+    // Navigate to the previous slide
+    $('#lightbox-prev').on('click', function() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+        showLightbox(currentIndex);
+    });
+
+    // Navigate to the next slide
+    $('#lightbox-next').on('click', function() {
+        currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+        showLightbox(currentIndex);
+    });
+
+    // Keyboard navigation for the lightbox
+    $(document).on('keydown', function(e) {
+        if ($('#lightbox').is(':visible')) {
+            if (e.key === 'ArrowRight') {
+                $('#lightbox-next').click();
+            } else if (e.key === 'ArrowLeft') {
+                $('#lightbox-prev').click();
+            } else if (e.key === 'Escape') {
+                $('#lightbox-close').click();
+            }
+        }
+    });
+});
+
+    </script>
+
+
+<!-- Header Start -->
+<header class="header">
+	<div class="container3">
+		<div class="row justify-content-between align-items-center">
+			<div class="fish-name">
+                <!-- Write your species name under the anchor tag -->
+				<a href="index.html">   </a>
+			</div>
+	 <div class="nav-toggle">
+	 </div>
+			 <h1 style="color: rgb(9, 9, 54); font-size: 30px; font-family:'Times New Roman', Times, serif;" >DOLPHINS</h1>
+			<nav class="nav">
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#predators">Prey & Predators</a></li>
+					<li><a href="#gallery">Gallery</a></li>
+					<li><a href="#count">World Count</a></li>
+                    <li><a href="honesty.html">Honesty Declaration</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- Header End -->
+
+<!-- Home Section Start -->
+<section class="home-section" id="home">
+<video autoplay muted loop id="myVideo">
+	<source src="video/video1.mp4" type="video/mp4">
+	Your browser does not support HTML5 video.
+  </video>
+  <figcaption style="text-align: center;">Amazing Wild Dolphins doing Spinner Jumpings. Credit: youtube</figcaption>
+  
+</section>
+<!-- Home Section End -->
+<h1 style="text-align: center; font-size: 30px;margin-top: 30px;">ABOUT DOLPHINS</h1>
+<section class="about-section" id="about">
+	
+	<div class="container1">
+		<img src="img/img1.jpg" alt="dolphin training" style="height: 600px;width:850px;">
+		
+	</div>
+        <p>Dolphins are renowned for their high intelligence and complex social behaviors, making them one of the most fascinating marine animals. They exhibit a range of sophisticated behaviors, including problem-solving, tool use, and the ability to learn new tasks.Dolphins face numerous threats due to human activities, making conservation efforts essential for their survival. Habitat destruction, pollution, and entanglement in fishing gear are significant challenges. Noise pollution from ships and industrial activities can disrupt their communication and echolocation, leading to increased stress and difficulty in finding food. Conservation organizations worldwide are working to protect dolphin populations through various initiatives, such as establishing marine protected areas, regulating fishing practices, and raising public awareness about the threats dolphins face. Research on dolphin behavior, health, and population dynamics is also crucial in developing effective conservation strategies. Public support and engagement in these efforts are vital to ensuring the long-term survival of these remarkable marine mammals. Dolphins have large, highly developed brains, which contribute to their advanced cognitive abilities. Socially, dolphins live in groups known as pods, which can consist of a few individuals to several hundred. These pods are characterized by strong social bonds and cooperative behaviors. Dolphins communicate with each other through a variety of vocalizations, including clicks and whistles, as well as body language such as leaping and slapping the water with their tails. Each dolphin has a unique signature whistle that acts like a name, allowing them to identify and call to one another, further enhancing their social interactions.</p>
+	</section>
+	<h1 style="text-align: center; font-size: 30px;margin-top: 30px;">FUN FACTS ABOUT DOLPHINS</h1>
+	<div class="container2">
+		
+		<img src="img/img11.jpg" alt="dolphin training" style="height: 600px;width:1550px;margin-left: 1%;" >
+		<figcaption style="text-align: center;">Dolphins jumping out from ocean.Published on May 6, 2022.Credit: Unsplash</figcaption><br>
+	</div>
+        <p style="margin-left: 1%">Dolphins are fascinating creatures that captivate us with their intelligence and playful nature. Did you know that these marine mammals are not fish, They are highly social animals, living in groups called pods, and communicate with each other through a complex system of whistles, clicks, and body language. Dolphins are also incredibly skilled hunters, using echolocation to locate prey and working together to herd schools of fish. These amazing animals can be found in oceans all over the world and are known for their acrobatic displays, leaping out of the water and performing spins and flips. It's no wonder that dolphins have captured our hearts and imaginations for centuries.</p>
+	
+<!-- About Section End -->
+
+<!-- Prey & Predators Section Start -->
+<h1 style="text-align: center; font-size: 30px;margin-top: 30px;">PREY AND PREDATORS</h1>
+
+<section class="predators-section" id="predators">
+	<div class="container1">
+	
+		<p>Predatory Behavior of Dolphins
+			Dolphins are apex predators in many marine environments, known for their sophisticated hunting techniques and cooperative behavior. Despite their prowess as predators, dolphins are also prey for larger marine species.They primarily feed on fish, squid, and crustaceans, using echolocation to detect and track their prey. This echolocation ability allows them to emit high-frequency sound waves that bounce off objects, helping them identify the size, shape, and location of their targets even in murky waters. Dolphins often hunt in groups, known as pods, employing strategies such as herding fish into tight balls or driving prey towards the surface to make them easier to catch. Their agility and speed, combined with their intelligence, make dolphins highly effective hunters. They have also been observed using tools, like sponges, to protect their rostrums while foraging on the seafloor, showcasing their problem-solving skills.
+			Dolphins as Prey
+			Despite their prowess as predators, dolphins are also prey for larger marine species. Orcas, or killer whales, are among the primary predators of dolphins. These powerful hunters can attack and consume dolphins, particularly targeting young or weak individuals. Sharks, including species like the great white and tiger shark, also pose a threat to dolphins. However, dolphins have developed various defense mechanisms to protect themselves from such predators. They use their speed and agility to outmaneuver attackers and often rely on the safety of their pods, where group coordination can deter predators. Additionally, dolphins can be aggressive towards threats, sometimes ramming sharks with their strong snouts or coordinating attacks to protect vulnerable pod members.</p>
+		<img src="img/img8.jpg" alt="prey and predators"style="height:600px;width:700px;;margin-left: 1%;">
+	</div>
+</section>
+<!-- Prey & Predators Section End -->
+
+<!-- Gallery Section Start -->
+<h1 style="text-align: center; font-size: 30px;margin-top: 30px;">GALLERY</h1>
+<br><br><br><br>
+
+<section class="gallery-section" id="gallery">
+	<div class="container1">
+		<figure>
+			<img src="img/img3.jpg" alt="Dolphins in the ocean">
+		</figure>
+		<figure>
+			<img src="img/img5.jpg" alt="Close-up of Dolphins">
+		</figure>
+		<figure>
+			<img src="img/img2.jpg" alt="dolphin in the ocean">
+		</figure>
+		<figure>
+			<img src="img/img6.jpg" alt=" types of dolphins in thr world">
+	</div>
+	<div class="container1">
+		<figure>
+			<img src="img/img7.jpg" alt=" dolphins with humans">
+		</figure>
+		<figure>
+			<img src="img/img4.jpg" alt="Diving in the ocean">
+		</figure>
+		<figure>
+			<img src="img/img10.jpg" alt="training of Dolphins">
+		</figure>
+		<figure>
+			<img src="img/img9.jpg" alt="Dolphins in the group">
+	</div>
+	<figcaption style="text-align: center;">Dolphin Images & Pictures Published on January 26, 2020 Credit: Unsplash</figcaption>
+
+	<h2>VIDEOS</h2>
+	<div class="container1">
+	
+		<video controls>
+			
+			<source src="video/video2.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+		
+		<video controls style="height: 400px;">
+			
+			<source src="video/video3.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+		
+</section>
+<figcaption style="text-align: center;">Dolphins doing trainning with humans                  .Amazing Wild Dolphins doing  Jumpings in the oceans. Credit: youtube</figcaption>
+
+<!-- Gallery Section End -->
+
+<!-- World Count Section Start -->
+<section class="count-section" id="count">
+	<h2>WORLD COUNT</h2>
+	<div class="container1">
+		
+		<table>
+			<thead>
+				<tr>
+					<th>Region</th>
+					<th>Population</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>North Pacific Ocean</td>
+					<td> 6 Millions</td>
+				</tr>
+				<tr>
+					<td>Bering Sea</td>
+					<td>Thousands</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+<!-- World Count Section End -->
+
+<footer>
+	<p class="copyright">&copy; 2024 Oceanic Org.</p>
+</footer>
+<!-- Lightbox Slideshow -->
+	<div id="lightbox" class="lightbox">
+   	 <div id="lightbox-content" class="lightbox-content">
+   	     <span id="lightbox-close" class="close">&times;</span>
+   	     <button id="lightbox-prev" class="nav-button prev">&lt;</button>
+   	     <button id="lightbox-next" class="nav-button next">&gt;</button>
+   	     <div id="lightbox-media"></div>
+   	 </div>
+	</div>
+</body>
+</html>
